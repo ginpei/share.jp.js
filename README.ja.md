@@ -1,0 +1,1 @@
+# share.jp.js
