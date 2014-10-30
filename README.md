@@ -57,7 +57,7 @@ jQueryプラグイン版は別途。
 
 読み込み以外にスクリプトの実行も特に不要です。
 
-```js
+```html
 <script src="share.jp.js"></script>
 ```
 
