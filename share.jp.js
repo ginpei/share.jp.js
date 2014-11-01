@@ -51,11 +51,10 @@
 		appendHtml('<div class="fb-like" data-href="https://example.com" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>', elBlock);
 	}
 
-	// TODO
+	// Facebook
 	share.facebook = function(elBlock) {
-		var elButton = document.createElement('DIV');
-		elButton.appendChild(document.createTextNode('FACEBOOK'));
-		elBlock.appendChild(elButton);
+		share._initFacebook();
+		appendHtml('<div class="fb-share-button" data-href="https://example.com" data-layout="button"></div>', elBlock);
 	}
 
 	// TODO
