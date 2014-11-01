@@ -1,4 +1,4 @@
-(function() {
+(function(document) {
 	var elBody = document.body;
 	var gp = window.gp = window.gp || {};
 
@@ -102,4 +102,4 @@
 	// Start
 	gp.share();
 	document.addEventListener('DOMContentLoaded', gp.share);
-})();
+})(document);
