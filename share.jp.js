@@ -44,6 +44,16 @@
 		}
 	};
 
+	// Twitter共通の初期処理
+	share._initTwitter = function() {
+		if (!share._twitterLoaded) {
+			var elFbScript = document.createElement('SCRIPT');
+			elFbScript.text = "!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');";
+			elBody.appendChild(elFbScript);
+			share._twitterLoaded = true;
+		}
+	};
+
 	// いいね！ボタン
 	// https://developers.facebook.com/docs/plugins/like-button
 	share.like = function(elBlock) {
@@ -59,9 +69,8 @@
 
 	// TODO
 	share.twitter = function(elBlock) {
-		var elButton = document.createElement('DIV');
-		elButton.appendChild(document.createTextNode('TWITTER'));
-		elBlock.appendChild(elButton);
+		share._initTwitter();
+		appendHtml('<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://example.com" data-text="TEXT-TEXT" data-hashtags="hashtag">Tweet</a>', elBlock);
 	}
 
 	// TODO
