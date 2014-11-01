@@ -99,6 +99,7 @@
 		(elParent || elBody).appendChild(el);
 	}
 
+	// Start
 	gp.share();
 	document.addEventListener('DOMContentLoaded', gp.share);
 })();
