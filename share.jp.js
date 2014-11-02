@@ -67,7 +67,7 @@
 		appendHtml('<div class="fb-share-button" data-href="https://example.com" data-layout="button"></div>', elBlock);
 	}
 
-	// TODO
+	// Twitter
 	share.twitter = function(elBlock) {
 		share._initTwitter();
 		appendHtml('<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://example.com" data-text="TEXT-TEXT" data-hashtags="hashtag">Tweet</a>', elBlock);
