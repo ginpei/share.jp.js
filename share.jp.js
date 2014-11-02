@@ -64,6 +64,16 @@
 		}
 	};
 
+	// LINE共通の初期処理
+	share._initLine = function() {
+		if (!share._lineLoaded) {
+			var elScript = document.createElement('SCRIPT');
+			elScript.src = '//media.line.me/js/line-button.js?v=20140411';
+			elBody.appendChild(elScript);
+			share._lineLoaded = true;
+		}
+	};
+
 	// いいね！ボタン
 	// https://developers.facebook.com/docs/plugins/like-button
 	share.like = function(elBlock) {
@@ -86,16 +96,30 @@
 	}
 
 	// はてブ
+	// http://b.hatena.ne.jp/guide/bbutton
 	share.hatebu = function(elBlock) {
 		share._initHatebu();
 		appendHtml('<a href="http://b.hatena.ne.jp/entry/http://example.com" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>', elBlock);
 	}
 
-	// TODO
+	// LINE
+	// https://media.line.me/howto/ja/
 	share.line = function(elBlock) {
+		share._initLine();
 		var elButton = document.createElement('DIV');
-		elButton.appendChild(document.createTextNode('LINE'));
 		elBlock.appendChild(elButton);
+
+		// スクリプト読み込み完了まで待機
+		(function() {
+			if (window.media_line_me) {
+				var elScript = document.createElement('SCRIPT');
+				elScript.text = 'new media_line_me.LineButton({"pc":false,"lang":"ja","type":"a","text":"てきてきてきすと","withUrl":true});';
+				elButton.appendChild(elScript);
+			}
+			else {
+				setTimeout(arguments.callee, 1000);
+			}
+		})();
 	}
 
 	// TODO
