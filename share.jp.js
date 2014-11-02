@@ -29,8 +29,8 @@
 	share._initFacebook = function() {
 		if (!share._fbLoaded) {
 			appendHtml('<div id="fb-root"></div>');
-			var elFbScript = document.createElement('SCRIPT');
-			elFbScript.text =
+			var elScript = document.createElement('SCRIPT');
+			elScript.text =
 				'(function(d, s, id) {\n' +
 				'	var js, fjs = d.getElementsByTagName(s)[0];\n' +
 				'	if (d.getElementById(id)) return;\n' +
@@ -39,7 +39,7 @@
 				'	fjs.parentNode.insertBefore(js, fjs);\n' +
 				'}(document, "script", "facebook-jssdk"));'
 				;
-			elBody.appendChild(elFbScript);
+			elBody.appendChild(elScript);
 			share._fbLoaded = true;
 		}
 	};
@@ -47,9 +47,9 @@
 	// Twitter共通の初期処理
 	share._initTwitter = function() {
 		if (!share._twitterLoaded) {
-			var elFbScript = document.createElement('SCRIPT');
-			elFbScript.text = "!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');";
-			elBody.appendChild(elFbScript);
+			var elScript = document.createElement('SCRIPT');
+			elScript.text = "!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');";
+			elBody.appendChild(elScript);
 			share._twitterLoaded = true;
 		}
 	};
