@@ -54,6 +54,16 @@
 		}
 	};
 
+	// はてブ共通の初期処理
+	share._initHatebu = function() {
+		if (!share._hatebuLoaded) {
+			var elScript = document.createElement('SCRIPT');
+			elScript.src = 'http://b.st-hatena.com/js/bookmark_button.js';
+			elBody.appendChild(elScript);
+			share._hatebuLoaded = true;
+		}
+	};
+
 	// いいね！ボタン
 	// https://developers.facebook.com/docs/plugins/like-button
 	share.like = function(elBlock) {
@@ -77,9 +87,8 @@
 
 	// はてブ
 	share.hatebu = function(elBlock) {
-		var elButton = document.createElement('DIV');
-		elButton.appendChild(document.createTextNode('HATEBU'));
-		elBlock.appendChild(elButton);
+		share._initHatebu();
+		appendHtml('<a href="http://b.hatena.ne.jp/entry/http://example.com" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>', elBlock);
 	}
 
 	// TODO
